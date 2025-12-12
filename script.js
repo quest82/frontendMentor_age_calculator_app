@@ -3,9 +3,9 @@ const monthOfBirth = parseInt("9", 10);
 const dayOfBirth = parseInt("24", 10);
 
 const currentDate = new Date();
-const currentYear = 2001 // currentDate.getFullYear();
-const currentMonth = 10; //currentDate.getMonth() + 1; // 1 is added to month of current date to remove Date indexing
-const currentDay = 26; // currentDate.getDate();
+const currentYear = currentDate.getFullYear();
+const currentMonth = currentDate.getMonth() + 1; // 1 is added to month of current date to remove Date indexing
+const currentDay = currentDate.getDate();
 
 let ageInYears = currentYear - yearOfBirth;
 let ageInMonths = currentMonth - monthOfBirth;
