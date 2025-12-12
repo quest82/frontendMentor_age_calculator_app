@@ -1,19 +1,26 @@
+// Store up date of birth in year, month & day as integers
 const yearOfBirth = parseInt("1984", 10);
 const monthOfBirth = parseInt("9", 10);
 const dayOfBirth = parseInt("24", 10);
 
+// Store up the current date in year, month & day as integers
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
-const currentMonth = currentDate.getMonth() + 1; // 1 is added to month of current date to remove Date indexing
+const currentMonth = 6 // currentDate.getMonth() + 1; // 1 is added to month of current date to account for Date() indexing
 const currentDay = currentDate.getDate();
 
+// Initial calculations to get the age of the user in the years, months and days they've been alive e.g 40 Years, 3 Months, 16 Days 
+// Subtracting the current year, month (number), and day from the that of the date of birth should offer the answer easily
 let ageInYears = currentYear - yearOfBirth;
 let ageInMonths = currentMonth - monthOfBirth;
 let ageInDays = currentDay - dayOfBirth;
 
+// For when the month of the DOB hasn't been reached (DOB is 6 - June but the current year is 3 - March)
+// This would give a negative using the initial calculation. To account for that, a year needs to be removed from age 
+
 if (ageInMonths < 0 && ageInDays < 0) {
 	ageInYears = ageInYears - 1;
-	ageInMonths = 12 + currentMonth - monthOfBirth;
+	ageInMonths = 12 + ageInMonths
 	const previousMonthDays = new Date(
 		currentYear,
 		currentMonth - 1,
@@ -35,7 +42,7 @@ if (ageInDays < 0) {
 
 if (ageInMonths < 0) {
 	ageInYears = ageInYears - 1;
-	ageInMonths = 12 + currentMonth - monthOfBirth;
+	ageInMonths = 12 + ageInMonths
 }
 
 console.log("Years", ageInYears);
