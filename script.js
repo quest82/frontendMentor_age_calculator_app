@@ -1,29 +1,43 @@
-const yearOfBirth = parseInt('1984', 10)
-const monthOfBirth = parseInt('9', 10)
-const dayOfBirth = parseInt('24', 10)
+const yearOfBirth = parseInt("1984", 10);
+const monthOfBirth = parseInt("9", 10);
+const dayOfBirth = parseInt("24", 10);
 
-const currentDate = new Date()
-const currentYear = currentDate.getFullYear()
-const currentMonth = currentDate.getMonth() + 1 // 1 is added to month of current date to remove Date indexing
-const currentDay = currentDate.getDate()
+const currentDate = new Date();
+const currentYear = 2001 // currentDate.getFullYear();
+const currentMonth = 10; //currentDate.getMonth() + 1; // 1 is added to month of current date to remove Date indexing
+const currentDay = 26; // currentDate.getDate();
 
+let ageInYears = currentYear - yearOfBirth;
+let ageInMonths = currentMonth - monthOfBirth;
+let ageInDays = currentDay - dayOfBirth;
 
-
-
-
-
-
-console.log(currentDate);
-
-let ageInYears = currentYear - yearOfBirth
-console.log(ageInYears);
-
-let ageInMonths = currentMonth - monthOfBirth 
-console.log(ageInMonths);
-
-let ageInDays = currentDay - dayOfBirth
-console.log(ageInDays);
+if (ageInMonths < 0 && ageInDays < 0) {
+	ageInYears = ageInYears - 1;
+	ageInMonths = 12 + currentMonth - monthOfBirth;
+	const previousMonthDays = new Date(
+		currentYear,
+		currentMonth - 1,
+		0
+	).getDate(); // To get the number of days of the previous month
+	ageInDays = previousMonthDays + ageInDays;
+	ageInMonths = ageInMonths - 1;
+}
 
 if (ageInDays < 0) {
-    let previousMonthDays = 
+	const previousMonthDays = new Date(
+		currentYear,
+		currentMonth - 1,
+		0
+	).getDate(); // To get the number of days of the previous month
+	ageInDays = previousMonthDays + ageInDays;
+	ageInMonths = ageInMonths - 1;
 }
+
+if (ageInMonths < 0) {
+	ageInYears = ageInYears - 1;
+	ageInMonths = 12 + currentMonth - monthOfBirth;
+}
+
+console.log("Years", ageInYears);
+console.log("Months", ageInMonths);
+console.log("Days", ageInDays);
