@@ -17,7 +17,7 @@ let ageInDays = currentDay - dayOfBirth;
 
 // For when the month of the DOB hasn't been reached (DOB is 6 - June but the current year is 3 - March)
 // This would give a negative using the initial calculation. To account for that, a year needs to be removed from age in years and the deficit month is removed from a full year in months (12)
-// If the date of the birthday hasn't been reached, the initial calculation will yield a negative number for age in days so it taken from the full previous month
+
 
 if (ageInMonths < 0 && ageInDays < 0) {
 	ageInYears = ageInYears - 1;
@@ -34,7 +34,7 @@ if (ageInMonths < 0) {
 	ageInMonths = 12 + ageInMonths;
 }
 
-function getDaysWhenNegative() {
+function getDaysWhenNegative() { // If the date of the birthday hasn't been reached, the initial calculation will yield a negative number for age in days so it taken from the full previous month
 	const previousMonthDays = new Date(
 		currentYear,
 		currentMonth - 1,

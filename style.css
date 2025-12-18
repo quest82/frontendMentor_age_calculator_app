@@ -1,0 +1,260 @@
+/* 
+VARIABLES
+*/
+
+:root {
+	--clr-purple: hsl(259, 100%, 65%);
+	--clr-red: hsl(0, 100%, 67%);
+	--clr-white-900: hsl(0, 0%, 100%);
+	--clr-white-700: hsl(0, 0%, 94%);
+	--clr-grey-200: hsl(0, 0%, 86%);
+	--clr-grey-400: hsl(0, 1%, 44%);
+	--clr-black: hsl(0, 0%, 8%);
+
+	--fnt-wgt-normal: 400;
+	--fnt-wgt-bold: 700;
+	--fnt-wgt-xbold: 800;
+	--fnt-fam: "Roboto";
+}
+
+/* 
+FONT IMPORT
+*/
+
+@font-face {
+	font-family: "Roboto";
+	src: url(./assets/Roboto_variable/Roboto-Italic-VariableFont_wdth_wght.ttf)
+		format("truetype-variations");
+	font-display: swap;
+	font-style: italic;
+	font-weight: 1 999;
+}
+
+@font-face {
+	font-family: "Roboto";
+	src: url(./assets/Roboto_variable/Roboto-VariableFont_wdth_wght.ttf)
+		format("truetype-variations");
+	font-display: swap;
+	font-style: normal;
+	font-weight: 1 999;
+}
+
+/* 
+CSS RESET
+ */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+  2. Remove default margin
+*/
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+  Typographic tweaks!
+  3. Add accessible line-height
+  4. Improve text rendering
+*/
+body {
+	line-height: 1.7;
+	-webkit-font-smoothing: antialiased;
+}
+
+/*
+  5. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+}
+
+/*
+  6. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+/*
+  7. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+/*
+  8. Remove underline from anchor links
+*/
+
+a,
+a:visited,
+a:active {
+	text-decoration: none;
+}
+
+/* 
+GLOBAL
+*/
+
+body {
+	font-family: var(--fnt-fam);
+	font-style: normal;
+	background-color: var(--clr-white-700);
+	width: 100%;
+	font-size: 1rem;
+}
+
+main {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+/* 
+MOBILE VIEW
+*/
+
+/* layout */
+
+.ageCalculator {
+	background-color: var(--clr-white-900);
+	margin: 2em 1em;
+	padding: 2em 1.4em;
+	border-radius: 23px;
+	border-bottom-right-radius: 90px;
+}
+
+/* ---- form ---- */
+
+form {
+	padding-bottom: 3em;
+	border-bottom: 1.5px solid var(--clr-grey-200);
+}
+
+.ageCalculator__form__inputs {
+	display: inline-block;
+	width: 30%;
+	margin-left: 0.3em;
+}
+
+input {
+	max-width: 80px;
+	padding: 0.15em 0.6em;
+	outline: none;
+	border: 1px solid var(--clr-grey-200);
+	border-radius: 6px;
+}
+
+/* typo */
+
+/* ---- form ---- */
+
+label {
+	font-size: 0.58rem;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	color: var(--clr-grey-400);
+	font-weight: var(--fnt-wgt-xbold);
+}
+
+input {
+	color: var(--clr-black);
+}
+
+input::placeholder {
+	font-weight: var(--fnt-wgt-bold);
+	color: var(--clr-grey-400);
+}
+
+/* ---- output ---- */
+
+.output {
+	font-size: 2.5rem;
+	font-weight: var(--fnt-wgt-xbold);
+	font-style: italic;
+	line-height: 1.2;
+}
+
+span {
+	color: var(--clr-purple);
+}
+
+/* ---- assets ---- */
+
+.form-btn {
+	border-radius: 50%;
+	border: none;
+	padding: 0.8em;
+	width: 46px;
+	background-color: var(--clr-purple);
+	translate: 7.6em -1.5em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 380px) {
+	.form-btn {
+		translate: 7.9em -1.5em;
+	}
+}
+
+@media (min-width: 400px) {
+	.form-btn {
+		translate: 9em -1.5em;
+	}
+}
+
+@media (min-width: 450px) {
+	.form-btn {
+		translate: 10.4em -1.5em;
+	}
+}
+
+@media (min-width: 500px) {
+	.form-btn {
+		translate: 24em -1.5em;
+	}
+}
+
+@media (min-width: 580px) {
+	.form-btn {
+		translate: 30em -1.5em;
+	}
+}
