@@ -13,7 +13,7 @@ const dayOfBirth = parseInt(form.day.value, 10);
 // Store up the current date in year, month & day as integers
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
-const currentMonth = 4 //currentDate.getMonth() + 1; // 1 is added to month of current date to account for Date() indexing
+const currentMonth = currentDate.getMonth() + 1; // 1 is added to month of current date to account for Date() indexing
 const currentDay = currentDate.getDate();
 
 form.addEventListener("submit", (e) => {

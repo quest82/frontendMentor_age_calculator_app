@@ -124,8 +124,11 @@ body {
 }
 
 main {
-	max-width: 600px;
-	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 /* 
@@ -136,10 +139,12 @@ MOBILE VIEW
 
 .ageCalculator {
 	background-color: var(--clr-white-900);
+	width: min(90vw, 500px);
 	margin: 2em 1em;
 	padding: 2em 1.4em;
 	border-radius: 23px;
 	border-bottom-right-radius: 90px;
+	
 }
 
 /* ---- form ---- */
@@ -157,10 +162,11 @@ form {
 
 input {
 	max-width: 80px;
-	padding: 0.15em 0.6em;
+	padding: 0.3em 0.7em;
 	outline: none;
 	border: 1px solid var(--clr-grey-200);
 	border-radius: 6px;
+	font-weight: var(--fnt-wgt-xbold);
 }
 
 /* typo */
@@ -187,7 +193,7 @@ input::placeholder {
 /* ---- output ---- */
 
 .output {
-	font-size: 2.5rem;
+	font-size: clamp(3rem, 5vw, 4rem);
 	font-weight: var(--fnt-wgt-xbold);
 	font-style: italic;
 	line-height: 1.2;
@@ -199,62 +205,11 @@ span {
 
 /* ---- assets ---- */
 
-.form-btn {
+/* .form-btn {
 	border-radius: 50%;
 	border: none;
 	padding: 0.8em;
 	width: 46px;
 	background-color: var(--clr-purple);
 	translate: 7.6em -1.5em;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@media (min-width: 380px) {
-	.form-btn {
-		translate: 7.9em -1.5em;
-	}
-}
-
-@media (min-width: 400px) {
-	.form-btn {
-		translate: 9em -1.5em;
-	}
-}
-
-@media (min-width: 450px) {
-	.form-btn {
-		translate: 10.4em -1.5em;
-	}
-}
-
-@media (min-width: 500px) {
-	.form-btn {
-		translate: 24em -1.5em;
-	}
-}
-
-@media (min-width: 580px) {
-	.form-btn {
-		translate: 30em -1.5em;
-	}
-}
+} */
