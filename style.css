@@ -139,28 +139,28 @@ MOBILE VIEW
 .ageCalculator {
 	background-color: var(--clr-white-900);
 	width: min(90vw, 500px);
-	margin: 9em 1em;
+	margin: 7em 1em 0;
 	padding: 2em 1.4em;
 	border-radius: 23px;
 	border-bottom-right-radius: 90px;
-	
 }
 
 /* ---- form ---- */
 
 form {
-	padding-bottom: 1em;
+	padding-bottom: calc(4rem - 3vw);
 	border-bottom: 1.5px solid var(--clr-grey-200);
+	position: relative;
 }
 
 .ageCalculator__form__inputs {
 	display: inline-block;
-	width: min(30.5%, 100px);
+	width: min(30.5%, 110px);
 	margin-right: 4px;
 }
 
 input {
-	width: min(100%, 90px);
+	width: min(100%, 100px);
 	display: block;
 	padding: 0.3em 0.7em;
 	outline: none;
@@ -206,11 +206,31 @@ span {
 
 /* ---- assets ---- */
 
-/* .form-btn {
-	border-radius: 50%;
-	border: none;
+.form-btn {
+	background-color: var(--clr-purple);
+
+	/* 
 	padding: 0.8em;
 	width: 46px;
-	background-color: var(--clr-purple);
-	translate: 7.6em -1.5em;
-} */
+	*/
+}
+
+.btn_container {
+	position: absolute;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	overflow: hidden;
+	translate: 7.6em -1.5em; 
+}
+
+.btn_container::before {
+	content: '';
+	display: block;
+	inset: 0;
+	background-image: url(./assets/images/icon-arrow.svg);
+	background-repeat: no-repeat;
+	background-size: 18px;
+	position: absolute;
+	background-position: center;
+}
