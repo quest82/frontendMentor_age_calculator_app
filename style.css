@@ -210,7 +210,17 @@ span {
 	color: var(--clr-purple);
 }
 
-/* ---- assets ---- */
+/* ---- error state ---- */
+
+.error__text {
+	color: var(--clr-red);
+}
+
+.error__border {
+	border: 1px solid var(--clr-red);
+}
+
+/* assets */
 
 .form-btn img {
 	width: 22px;
