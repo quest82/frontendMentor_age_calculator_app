@@ -5,11 +5,6 @@ const yearOutput = document.querySelector(".yearOutput span");
 const monthOutput = document.querySelector(".monthOutput span");
 const dayOutput = document.querySelector(".dayOutput span");
 
-// Store up date of birth in year, month & day as integers
-const yearOfBirth = parseInt(form.year.value, 10);
-const monthOfBirth = parseInt(form.month.value, 10);
-const dayOfBirth = parseInt(form.day.value, 10);
-
 // Store up the current date in year, month & day as integers
 const currentDate = new Date();
 const currentYear = currentDate.getFullYear();
@@ -18,6 +13,11 @@ const currentDay = currentDate.getDate();
 
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
+
+	// Store up date of birth in year, month & day as integers
+	const yearOfBirth = parseInt(form.year.value, 10);
+	const monthOfBirth = parseInt(form.month.value, 10);
+	const dayOfBirth = parseInt(form.day.value, 10);
 
 	// Initial calculations to get the age of the user in the years, months and days they've been alive e.g 40 Years, 3 Months, 16 Days
 	// Subtracting the current year, month (number), and day from the that of the date of birth should offer the answer easily
@@ -42,9 +42,13 @@ form.addEventListener("submit", (e) => {
 		getMonthsNegative();
 	}
 
-	yearOutput.textContent = ageInYears
-	monthOutput.textContent = ageInMonths
-	dayOutput.textContent = ageInDays
+	console.log("year", ageInYears);
+	console.log("month", ageInMonths);
+	console.log("day", ageInDays);
+
+	yearOutput.textContent = ageInYears;
+	monthOutput.textContent = ageInMonths;
+	dayOutput.textContent = ageInDays;
 
 	function getMonthsNegative() {
 		ageInYears = ageInYears - 1;
@@ -61,4 +65,6 @@ form.addEventListener("submit", (e) => {
 		ageInDays = previousMonthDays + ageInDays;
 		ageInMonths = ageInMonths - 1;
 	}
+
+	form.reset();
 });
