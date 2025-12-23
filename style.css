@@ -149,6 +149,7 @@ MOBILE VIEW
 
 form {
 	padding-bottom: calc(4rem - 3vw);
+	margin-bottom: 2em;
 	border-bottom: 1.5px solid var(--clr-grey-200);
 	position: relative;
 }
@@ -208,24 +209,19 @@ span {
 
 .form-btn {
 	background-color: var(--clr-purple);
-
-	/* 
-	padding: 0.8em;
-	width: 46px;
-	*/
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
 }
 
 .btn_container {
 	position: absolute;
-	width: 35px;
-	height: 35px;
-	border-radius: 50%;
-	overflow: hidden;
-	translate: 7.6em -1.5em; 
+	translate: 0 calc(2.65rem - 3vw);
+	left: calc(33vw + 8px);
 }
 
 .btn_container::before {
-	content: '';
+	content: "";
 	display: block;
 	inset: 0;
 	background-image: url(./assets/images/icon-arrow.svg);
@@ -233,4 +229,17 @@ span {
 	background-size: 18px;
 	position: absolute;
 	background-position: center;
+}
+
+@media (min-width: 500px) {
+	.btn_container {
+		/* left: calc(9.4em + 42.7vw); */
+		left: calc(71vw + 10px);
+	}
+}
+
+@media (min-width: 580px) {
+	.btn_container {
+		left: 410px;
+	}
 }
