@@ -42,9 +42,9 @@ form.addEventListener("submit", (e) => {
 		getMonthsNegative();
 	}
 
-	console.log("year", ageInYears);
-	console.log("month", ageInMonths);
-	console.log("day", ageInDays);
+	// console.log("year", ageInYears);
+	// console.log("month", ageInMonths);
+	// console.log("day", ageInDays);
 
 	yearOutput.textContent = ageInYears;
 	monthOutput.textContent = ageInMonths;

@@ -185,11 +185,16 @@ label {
 input {
 	color: var(--clr-black);
 	font-size: 1.1rem;
+	cursor: pointer;
 }
 
 input::placeholder {
 	font-weight: var(--fnt-wgt-bold);
 	color: var(--clr-grey-400);
+}
+
+input:focus {
+	border: 1px solid var(--clr-purple);
 }
 
 /* ---- output ---- */
@@ -207,29 +212,33 @@ span {
 
 /* ---- assets ---- */
 
+.form-btn img {
+	width: 22px;
+}
+
 .form-btn {
 	display: block;
 	background-color: var(--clr-purple);
 	border-radius: 50%;
 	border: none;
-	padding: 0.89em;
+	padding: 0.7em;
 	position: absolute;
 	translate: 0 calc(2.56rem - 3vw);
 	left: calc(32vw + 8px);
 	cursor: pointer;
 }
 
-.form-btn img {
-	width: 19px;
+.form-btn:hover {
+	background-color: var(--clr-black);
 }
 
-@media (min-width: 500px) {
+@media (min-width: 31.25em) {
 	.form-btn {
 		left: calc(69.5vw + 12px);
 	}
 }
 
-@media (min-width: 550px) {
+@media (min-width: 34.9375em) {
 	.form-btn {
 		left: 410px;
 	}
