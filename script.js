@@ -14,6 +14,15 @@ const currentDay = currentDate.getDate();
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
+	// This function does the age calculation
+	ageCalculator();
+
+	form.reset();
+});
+
+
+
+function ageCalculator() {
 	// Store up date of birth in year, month & day as integers
 	const yearOfBirth = parseInt(form.year.value, 10);
 	const monthOfBirth = parseInt(form.month.value, 10);
@@ -65,6 +74,4 @@ form.addEventListener("submit", (e) => {
 		ageInDays = previousMonthDays + ageInDays;
 		ageInMonths = ageInMonths - 1;
 	}
-
-	form.reset();
-});
+}
