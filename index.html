@@ -16,7 +16,7 @@
 	<body>
 		<main class="container">
 			<section class="ageCalculator">
-				<form action="" class="ageCalculator__form">
+				<form action="" class="ageCalculator__form" id="form">
 					<div class="ageCalculator__form__inputs">
 						<label for="day">Day</label>
 						<input type="text" name="day" id="day" placeholder="DD" />
@@ -29,9 +29,9 @@
 						<label for="year">Year</label>
 						<input type="text" name="year" id="year" placeholder="YYYY" />
 					</div>
-					<div class="btn_container">
-						<input type="submit" value="" class="form-btn" />
-					</div>
+					<button form="form" class="form-btn">
+						<img src="./assets/images/icon-arrow.svg" alt="white arrow facing down">
+					</button>
 				</form>
 				<div class="output">
 					<p class="yearOutput"><span>--</span> years</p>

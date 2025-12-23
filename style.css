@@ -208,38 +208,29 @@ span {
 /* ---- assets ---- */
 
 .form-btn {
-	background-color: var(--clr-purple);
-	width: 44px;
-	height: 44px;
-	border-radius: 50%;
-}
-
-.btn_container {
-	position: absolute;
-	translate: 0 calc(2.65rem - 3vw);
-	left: calc(33vw + 8px);
-}
-
-.btn_container::before {
-	content: "";
 	display: block;
-	inset: 0;
-	background-image: url(./assets/images/icon-arrow.svg);
-	background-repeat: no-repeat;
-	background-size: 18px;
+	background-color: var(--clr-purple);
+	border-radius: 50%;
+	border: none;
+	padding: 0.89em;
 	position: absolute;
-	background-position: center;
+	translate: 0 calc(2.56rem - 3vw);
+	left: calc(32vw + 8px);
+	cursor: pointer;
+}
+
+.form-btn img {
+	width: 19px;
 }
 
 @media (min-width: 500px) {
-	.btn_container {
-		/* left: calc(9.4em + 42.7vw); */
-		left: calc(71vw + 10px);
+	.form-btn {
+		left: calc(69.5vw + 12px);
 	}
 }
 
-@media (min-width: 580px) {
-	.btn_container {
+@media (min-width: 550px) {
+	.form-btn {
 		left: 410px;
 	}
 }
