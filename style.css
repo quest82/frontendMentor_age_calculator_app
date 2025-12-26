@@ -216,7 +216,7 @@ span {
 
 .error__text {
 	color: var(--clr-red);
-	font-size: .63rem;
+	font-size: clamp(0.6rem, 2vw, .7rem);
 	font-style: italic;
 	font-weight: var(--fnt-wgt-normal);
 	margin-top: .35em;
@@ -237,9 +237,8 @@ span {
 	border: none;
 	padding: 0.7em;
 	position: absolute;
-	top: calc(9.28rem);
-	/* 
-	left: calc(32vw + 8px); */
+	top: calc(10rem - 3vw);
+	left: calc(32vw + 16px);
 	cursor: pointer;
 } 
 
@@ -247,14 +246,14 @@ span {
 	background-color: var(--clr-black);
 }
 
-/* @media (min-width: 31.25em) {
+@media (min-width: 31.25em) {
 	.form-btn {
-		left: calc(69.5vw + 12px);
+		left: calc(72.6vw + 14px);
 	}
 }
 
 @media (min-width: 34.9375em) {
 	.form-btn {
-		left: 410px;
+		left: 427px;
 	}
-} */
+}
