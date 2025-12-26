@@ -118,9 +118,9 @@ GLOBAL
 body {
 	font-family: var(--fnt-fam);
 	font-style: normal;
+	font-size: 1rem;
 	background-color: var(--clr-white-700);
 	width: 100%;
-	font-size: 1rem;
 }
 
 main {
@@ -152,17 +152,18 @@ form {
 	margin-bottom: 2em;
 	border-bottom: 1.5px solid var(--clr-grey-200);
 	position: relative;
+	display: flex;
 }
 
 .ageCalculator__form__inputs {
 	display: inline-block;
-	width: min(30.5%, 110px);
+	width: min(30.5%, 120px);
 	margin-right: 4px;
 }
 
 input {
-	width: min(100%, 100px);
 	display: block;
+	width: min(100%, 110px);
 	padding: 0.3em 0.7em;
 	outline: none;
 	border: 1px solid var(--clr-grey-200);
@@ -170,16 +171,20 @@ input {
 	font-weight: var(--fnt-wgt-xbold);
 }
 
+input:focus {
+	border: 1px solid var(--clr-purple);
+}
+
 /* typo */
 
 /* ---- form ---- */
 
 label {
+	color: var(--clr-grey-400);
 	font-size: 0.7rem;
+	font-weight: var(--fnt-wgt-xbold);
 	text-transform: uppercase;
 	letter-spacing: 3px;
-	color: var(--clr-grey-400);
-	font-weight: var(--fnt-wgt-xbold);
 }
 
 input {
@@ -191,10 +196,6 @@ input {
 input::placeholder {
 	font-weight: var(--fnt-wgt-bold);
 	color: var(--clr-grey-400);
-}
-
-input:focus {
-	border: 1px solid var(--clr-purple);
 }
 
 /* ---- output ---- */
@@ -214,6 +215,10 @@ span {
 
 .error__text {
 	color: var(--clr-red);
+	font-size: .63rem;
+	font-style: italic;
+	font-weight: var(--fnt-wgt-normal);
+	margin-top: .35em;
 }
 
 .error__border {
@@ -222,11 +227,9 @@ span {
 
 /* assets */
 
-.form-btn img {
-	width: 22px;
-}
-
 .form-btn {
+	width: 50px;
+	height: 50px;
 	display: block;
 	background-color: var(--clr-purple);
 	border-radius: 50%;
@@ -236,7 +239,9 @@ span {
 	translate: 0 calc(2.56rem - 3vw);
 	left: calc(32vw + 8px);
 	cursor: pointer;
-}
+} 
+
+
 
 .form-btn:hover {
 	background-color: var(--clr-black);

@@ -14,19 +14,76 @@ const currentDay = currentDate.getDate();
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	// This function does the age calculation
-	ageCalculator();
+	const inputs = [form.day, form.month, form.year];
+	let errorText = document.createElement("p");
+	errorText.classList.add("error__text");
 
-	form.reset();
+	// Validation - Check if date is in the past
+	let dateInput = new Date(
+		form.year.value,
+		form.month.value,
+		form.day.value
+	).getTime();
+
+	if (currentDate.getTime() < dateInput) {
+		inputs.forEach((input) => {
+			input.classList.add("error__border");
+			input.previousElementSibling.style.color = "red";
+		});
+
+		errorText.textContent = "Must";
+		form.year.after(errorText);
+	}
+
+	// const inputs = [form.day, form.month, form.year];
+	// inputs.forEach((input) => {
+	// 	let value = input.value.trim();
+	// 	let errorText = document.createElement("p");
+	// 	errorText.classList.add("error__text");
+
+	// 	// Reset
+
+	// 	// Empty form submission
+	// 	if (!value) {
+	// 		errorText.textContent = "This field is required";
+	// 		input.after(errorText);
+	// 		input.previousElementSibling.style.color = "red";
+	// 		input.classList.add("error__border");
+	// 	}
+
+	// 	if (value) {
+	// 	}
+	// });
+
+	// if ((form.day.value && form.month.value && form.year.value)) {
+	// 	ageCalculator();
+	// 	input.classList.remove("error__border");
+	// 	input.previousElementSibling.style.color = "";
+	// 	errorText.remove();
+	// }
+
+	// This function does the age calculation
+
+	// form.reset();
 });
 
+// function borderError() {
+// 	const inputs = [form.day, form.month, form.year];
+// 	inputs.forEach((input) => {
+// 		input.classList.add("error__border");
+// 	});
+// }
 
+// function textError(errorMessage = "") {
+// 	let errorText = document.createElement("p");
+// 	errorText.textContent = errorMessage;
+// }
 
 function ageCalculator() {
 	// Store up date of birth in year, month & day as integers
-	const yearOfBirth = parseInt(form.year.value, 10);
-	const monthOfBirth = parseInt(form.month.value, 10);
-	const dayOfBirth = parseInt(form.day.value, 10);
+	const yearOfBirth = parseInt(form.year.value.trim(), 10);
+	const monthOfBirth = parseInt(form.month.value.trim(), 10);
+	const dayOfBirth = parseInt(form.day.value.trim(), 10);
 
 	// Initial calculations to get the age of the user in the years, months and days they've been alive e.g 40 Years, 3 Months, 16 Days
 	// Subtracting the current year, month (number), and day from the that of the date of birth should offer the answer easily
