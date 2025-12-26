@@ -143,6 +143,7 @@ MOBILE VIEW
 	padding: 2em 1.4em;
 	border-radius: 23px;
 	border-bottom-right-radius: 90px;
+	position: relative;
 }
 
 /* ---- form ---- */
@@ -236,18 +237,17 @@ span {
 	border: none;
 	padding: 0.7em;
 	position: absolute;
-	translate: 0 calc(2.56rem - 3vw);
-	left: calc(32vw + 8px);
+	top: calc(9.28rem);
+	/* 
+	left: calc(32vw + 8px); */
 	cursor: pointer;
 } 
-
-
 
 .form-btn:hover {
 	background-color: var(--clr-black);
 }
 
-@media (min-width: 31.25em) {
+/* @media (min-width: 31.25em) {
 	.form-btn {
 		left: calc(69.5vw + 12px);
 	}
@@ -257,4 +257,4 @@ span {
 	.form-btn {
 		left: 410px;
 	}
-}
+} */
