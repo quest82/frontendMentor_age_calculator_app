@@ -149,7 +149,7 @@ MOBILE VIEW
 /* ---- form ---- */
 
 form {
-	padding-bottom: calc(4rem - 3vw);
+	padding-bottom: calc(3.5rem - 3vw);
 	margin-bottom: 2em;
 	border-bottom: 1.5px solid var(--clr-grey-200);
 	position: relative;
@@ -220,6 +220,7 @@ span {
 	font-style: italic;
 	font-weight: var(--fnt-wgt-normal);
 	margin-top: .35em;
+	visibility: hidden;
 }
 
 .error__border {
@@ -237,7 +238,7 @@ span {
 	border: none;
 	padding: 0.7em;
 	position: absolute;
-	top: calc(10rem - 3vw);
+	top: calc(9.5rem - 2.7vw);
 	left: calc(32vw + 16px);
 	cursor: pointer;
 } 

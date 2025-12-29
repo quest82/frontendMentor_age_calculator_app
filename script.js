@@ -1,9 +1,9 @@
 // DOM Queries
-
 const form = document.querySelector(".ageCalculator__form");
 const yearOutput = document.querySelector(".yearOutput span");
 const monthOutput = document.querySelector(".monthOutput span");
 const dayOutput = document.querySelector(".dayOutput span");
+const errorText = Array.from(document.querySelectorAll(".error__text"));
 
 // Store up the current date in year, month & day as integers
 const currentDate = new Date();
@@ -14,70 +14,8 @@ const currentDay = currentDate.getDate();
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
-	const inputs = [form.day, form.month, form.year];
-	let errorText = document.createElement("p");
-	errorText.classList.add("error__text");
-
-	// Validation - Check if date is in the past
-	let dateInput = new Date(
-		form.year.value,
-		form.month.value,
-		form.day.value
-	).getTime();
-
-	if (currentDate.getTime() < dateInput) {
-		inputs.forEach((input) => {
-			input.classList.add("error__border");
-			input.previousElementSibling.style.color = "red";
-		});
-
-		errorText.textContent = "Must";
-		form.year.after(errorText);
-	}
-
-	// const inputs = [form.day, form.month, form.year];
-	// inputs.forEach((input) => {
-	// 	let value = input.value.trim();
-	// 	let errorText = document.createElement("p");
-	// 	errorText.classList.add("error__text");
-
-	// 	// Reset
-
-	// 	// Empty form submission
-	// 	if (!value) {
-	// 		errorText.textContent = "This field is required";
-	// 		input.after(errorText);
-	// 		input.previousElementSibling.style.color = "red";
-	// 		input.classList.add("error__border");
-	// 	}
-
-	// 	if (value) {
-	// 	}
-	// });
-
-	// if ((form.day.value && form.month.value && form.year.value)) {
-	// 	ageCalculator();
-	// 	input.classList.remove("error__border");
-	// 	input.previousElementSibling.style.color = "";
-	// 	errorText.remove();
-	// }
-
-	// This function does the age calculation
-
-	// form.reset();
+	formValidation();
 });
-
-// function borderError() {
-// 	const inputs = [form.day, form.month, form.year];
-// 	inputs.forEach((input) => {
-// 		input.classList.add("error__border");
-// 	});
-// }
-
-// function textError(errorMessage = "") {
-// 	let errorText = document.createElement("p");
-// 	errorText.textContent = errorMessage;
-// }
 
 function ageCalculator() {
 	// Store up date of birth in year, month & day as integers
@@ -108,10 +46,6 @@ function ageCalculator() {
 		getMonthsNegative();
 	}
 
-	// console.log("year", ageInYears);
-	// console.log("month", ageInMonths);
-	// console.log("day", ageInDays);
-
 	yearOutput.textContent = ageInYears;
 	monthOutput.textContent = ageInMonths;
 	dayOutput.textContent = ageInDays;
@@ -131,4 +65,95 @@ function ageCalculator() {
 		ageInDays = previousMonthDays + ageInDays;
 		ageInMonths = ageInMonths - 1;
 	}
+}
+
+function formValidation() {
+	const inputs = [form.day, form.month, form.year];
+	let dateInput = new Date(
+		form.year.value,
+		form.month.value,
+		form.day.value
+	).getTime();
+
+	let status = true;
+
+	inputs.forEach((input) => {
+		// // 5. Ensure date inputted is valid
+		const monthDays = {
+			January: 31,
+			February: 28,
+			March: 31,
+			April: 30,
+			May: 31,
+			June: 30,
+			July: 31,
+			August: 31,
+			September: 30,
+			October: 31,
+			November: 30,
+			December: 31,
+		};
+
+		let monthDaysArray = Object.entries(monthDays);
+		let monthOfBirthIndexed = parseInt(form.month.value.trim(), 10) - 1;
+		if (
+			parseInt(form.day.value.trim(), 10) >
+			monthDaysArray[monthOfBirthIndexed][1]
+		) {
+			addRed(input);
+			addErrorText("Must be a valid date", "day");
+			status = false;
+		}
+
+
+		// Empty form
+		if (!input.value.trim()) {
+			addRed(input);
+			errorText.forEach((text) => {
+				text.style.visibility = "visible";
+				text.textContent = "This field is required";
+			});
+			status = false;
+		}
+
+		// Future date
+		if (currentDate.getTime() < dateInput) {
+			addRed(input);
+			addErrorText("Must be in the past", "year");
+			status = false;
+		}
+
+		// Invalid day input
+		if (form.day.value > 31) {
+			addRed(input);
+			addErrorText("Must be a valid day", "day");
+			status = false;
+		}
+
+		// Invlid month input
+		if (form.month.value > 12) {
+			addRed(input);
+			addErrorText("Must be a valid month", "month");
+			status = false;
+		}
+
+
+		if (status === true) {
+			ageCalculator();
+		}
+	});
+}
+
+function addErrorText(msg, id) {
+	errorText.forEach((text) => {
+		if (text.classList.contains(id)) {
+			text.style.visibility = "visible";
+			text.textContent = msg;
+		}
+	});
+}
+
+function addRed(elem) {
+	elem.classList.add("error__border");
+	elem.previousElementSibling.style.color = "red";
 }
