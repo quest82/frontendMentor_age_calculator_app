@@ -46,9 +46,35 @@ function ageCalculator() {
 		getMonthsNegative();
 	}
 
-	yearOutput.textContent = ageInYears;
-	monthOutput.textContent = ageInMonths;
-	dayOutput.textContent = ageInDays;
+	let yearStart = 0;
+	let monthStart = 0;
+	let dayStart = 0;
+	let yearCount = setInterval(() => {
+		yearOutput.textContent = yearStart;
+		if (yearStart === ageInYears) {
+			clearInterval(yearCount);
+		} else {
+			yearStart++;
+		}
+	}, 100);
+
+	let monthCount = setInterval(() => {
+		monthOutput.textContent = monthStart;
+		if (monthStart === ageInMonths) {
+			clearInterval(monthCount);
+		} else {
+			monthStart++;
+		}
+	}, 100);
+
+	let dayCount = setInterval(() => {
+		dayOutput.textContent = dayStart;
+		if (dayStart === ageInDays) {
+			clearInterval(dayCount);
+		} else {
+			dayStart++;
+		}
+	}, 100);
 
 	function getMonthsNegative() {
 		ageInYears = ageInYears - 1;
@@ -68,80 +94,84 @@ function ageCalculator() {
 }
 
 function formValidation() {
-	const inputs = [form.day, form.month, form.year];
+	clearErrors();
+	// Store up date of birth in year, month & day as integers
+	const yob = form.year;
+	const mob = form.month;
+	const dob = form.day;
+
 	let dateInput = new Date(
-		form.year.value,
-		form.month.value,
-		form.day.value
-	).getTime();
+		parseInt(yob.value.trim(), 10),
+		parseInt(mob.value.trim(), 10) - 1,
+		parseInt(dob.value.trim(), 10)
+	);
 
 	let status = true;
 
-	inputs.forEach((input) => {
-		// // 5. Ensure date inputted is valid
-		const monthDays = {
-			January: 31,
-			February: 28,
-			March: 31,
-			April: 30,
-			May: 31,
-			June: 30,
-			July: 31,
-			August: 31,
-			September: 30,
-			October: 31,
-			November: 30,
-			December: 31,
-		};
+	// Empty form
+	if (!parseInt(yob.value.trim(), 10)) {
+		addRed(yob);
+		addErrorText("This field is required", "year");
+		status = false;
+	}
 
-		let monthDaysArray = Object.entries(monthDays);
-		let monthOfBirthIndexed = parseInt(form.month.value.trim(), 10) - 1;
-		if (
-			parseInt(form.day.value.trim(), 10) >
-			monthDaysArray[monthOfBirthIndexed][1]
-		) {
-			addRed(input);
-			addErrorText("Must be a valid date", "day");
-			status = false;
-		}
+	if (!parseInt(mob.value.trim(), 10)) {
+		addRed(mob);
+		addErrorText("This field is required", "month");
+		status = false;
+	}
 
+	if (!parseInt(dob.value.trim(), 10)) {
+		addRed(dob);
+		addErrorText("This field is required", "day");
+		status = false;
+	}
 
-		// Empty form
-		if (!input.value.trim()) {
-			addRed(input);
-			errorText.forEach((text) => {
-				text.style.visibility = "visible";
-				text.textContent = "This field is required";
-			});
-			status = false;
-		}
+	if (!status) return; // No further code runs if at least one input is empty
 
-		// Future date
-		if (currentDate.getTime() < dateInput) {
-			addRed(input);
-			addErrorText("Must be in the past", "year");
-			status = false;
-		}
+	// Future date
 
-		// Invalid day input
-		if (form.day.value > 31) {
-			addRed(input);
-			addErrorText("Must be a valid day", "day");
-			status = false;
-		}
+	if (currentDate.getTime() < dateInput.getTime()) {
+		addRed(dob, mob, yob);
+		addErrorText("Must be in the past", "year");
+		status = false;
+	}
 
-		// Invlid month input
-		if (form.month.value > 12) {
-			addRed(input);
-			addErrorText("Must be a valid month", "month");
-			status = false;
-		}
+	// Invalid date
+	if (
+		dateInput.getFullYear() !== parseInt(yob.value.trim(), 10) ||
+		dateInput.getMonth() !== parseInt(mob.value.trim(), 10) - 1 ||
+		dateInput.getDate() !== parseInt(dob.value.trim(), 10)
+	) {
+		addRed(dob, mob, yob);
+		addErrorText("Must be a valid date", "day");
+		addErrorText("", "year");
+		status = false;
+	}
 
+	// Invalid day, month & year
+	if (parseInt(dob.value.trim(), 10) > 31) {
+		addRed(dob);
+		addErrorText("Must be a valid day", "day");
+		status = false;
+	}
 
-		if (status === true) {
-			ageCalculator();
-		}
-	});
+	if (parseInt(mob.value.trim(), 10) > 12) {
+		addRed(mob);
+		addErrorText("Must be a valid month", "month");
+		status = false;
+	}
+
+	if (parseInt(yob.value.trim(), 10) > currentYear) {
+		addRed(mob);
+		addErrorText("Must be in the past", "year");
+		addErrorText("", "day");
+		status = false;
+	}
+
+	if (status) {
+		ageCalculator();
+	}
 }
 
 function addErrorText(msg, id) {
@@ -153,7 +183,20 @@ function addErrorText(msg, id) {
 	});
 }
 
-function addRed(elem) {
-	elem.classList.add("error__border");
-	elem.previousElementSibling.style.color = "red";
+function addRed(...elem) {
+	elem.forEach((elem) => {
+		elem.classList.add("error__border");
+		elem.previousElementSibling.style.color = "red";
+	});
+}
+
+function clearErrors() {
+	errorText.forEach((text) => {
+		text.style.visibility = "hidden";
+	});
+
+	document.querySelectorAll(".error__border").forEach((el) => {
+		el.classList.remove("error__border");
+		el.previousElementSibling.style.color = "";
+	});
 }
