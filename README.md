@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://github.com/quest82/frontendMentor_age_calculator_app)
-- Live Site URL: [Add live site URL here](https://quest82.github.io/frontendMentor_age_calculator_app/)
+- Solution URL: [Gitub Repo](https://github.com/quest82/frontendMentor_age_calculator_app)
+- Live Site URL: [Live Site](https://quest82.github.io/frontendMentor_age_calculator_app/)
 
 ## My process
 
